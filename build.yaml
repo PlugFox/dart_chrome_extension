@@ -1,0 +1,77 @@
+targets:
+  $default:
+    sources:
+      - $package$
+      - pubspec.yaml
+      - web/**
+      - lib/**
+      - test/**
+    builders:
+      pubspec_generator:
+        options:
+          output: lib/src/constant/pubspec.yaml.g.dart
+      #drift_dev:
+      #  generate_for:
+      #    include:
+      #      - lib/src/*
+      #      - lib/src/ddl/*
+      #  options:
+      #    data_class_to_companions: true
+      #    mutable_classes: false
+      #    sqlite:
+      #      version: "3.43"
+      build_web_compilers:entrypoint:
+        enabled: true
+        generate_for:
+          - web/**.dart
+        dev_options:
+          compilers:
+            dartdevc:
+              args:
+                - -DCOMPILER=dartdevc
+        release_options:
+          compilers:
+            dart2js:
+              args:
+                - -O1
+                - -DCOMPILER=dart2js
+            dart2wasm:
+              args:
+                - -O3
+                - -DCOMPILER=dart2wasm
+      ccopilot|client_js_copy_builder:
+        enabled: true
+
+builders:
+  client_js_copy_builder:
+    required_inputs:
+      [
+        ".js",
+        ".wasm",
+        ".mjs",
+        ".map",
+        ".png",
+        ".webp",
+        ".html",
+        ".css",
+        ".json",
+        ".ico",
+      ]
+    import: "tool/copy_builder.dart"
+    builder_factories:
+      - copyBuilder
+    build_extensions:
+      {
+        "web/{{}}.dart.js": ["build/{{}}.dart.js"],
+        "web/{{}}.wasm": ["build/{{}}.wasm"],
+        "web/{{}}.mjs": ["build/{{}}.mjs"],
+        "web/{{}}.map": ["build/{{}}.map"],
+        "web/{{}}.png": ["build/icons/{{}}.png"],
+        "web/{{}}.webp": ["build/icons/{{}}.webp"],
+        "web/{{}}.html": ["build/{{}}.html"],
+        "web/{{}}.css": ["build/{{}}.css"],
+        "web/manifest.json": ["build/manifest.json"],
+        "web/favicon.ico": ["build/favicon.ico"],
+      }
+    auto_apply: none
+    build_to: source

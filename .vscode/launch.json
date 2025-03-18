@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome Extension",
+            "runtimeArgs": [
+                "--disable-extensions-except=${workspaceFolder}/build",
+                "--load-extension=${workspaceFolder}/build"
+            ],
+            "webRoot": "${workspaceFolder}/build",
+            "cwd": "${workspaceFolder}",
+            "env": {},
+            "preLaunchTask": "dart:build_runner:all"
+        },
+        {
+            "name": "Tag - make release",
+            "type": "dart",
+            "program": "tool/tag.dart",
+            "request": "launch",
+            "flutterMode": "release",
+            "cwd": "${workspaceFolder}",
+            "args": [],
+            "env": {}
+        }
+    ]
+}
