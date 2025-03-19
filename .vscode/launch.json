@@ -6,13 +6,33 @@
             "request": "launch",
             "name": "Launch Chrome Extension",
             "runtimeArgs": [
+                "--remote-debugging-port=9222",
                 "--disable-extensions-except=${workspaceFolder}/build",
                 "--load-extension=${workspaceFolder}/build"
             ],
             "webRoot": "${workspaceFolder}/build",
             "cwd": "${workspaceFolder}",
             "env": {},
-            "preLaunchTask": "dart:build_runner:all"
+            "preLaunchTask": "dart:build_runner:all",
+            "sourceMaps": true,
+            "smartStep": true,
+            "skipFiles": [
+                "**/node_modules/**",
+                "**/chrome-extension://*/**"
+            ]
+        },
+        {
+            "name": "Debug Content Script",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "webRoot": "${workspaceFolder}",
+            "sourceMaps": true,
+            "smartStep": true,
+            "skipFiles": [
+                "**/node_modules/**",
+                "**/chrome-extension://*/**"
+            ]
         },
         {
             "name": "Tag - make release",

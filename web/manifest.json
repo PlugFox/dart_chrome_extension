@@ -10,7 +10,7 @@
     ],
     "options_page": "options.html",
     "host_permissions": [
-        "https://plugfox.dev/*"
+        "https://n8n.plugfox.dev/*"
     ],
     "action": {
         "default_popup": "popup.html",
@@ -40,11 +40,13 @@
     "content_scripts": [
         {
             "matches": [
+                "<all_urls>",
                 "https://plugfox.com/*"
             ],
             "js": [
                 "content_script.dart.js"
-            ]
+            ],
+            "run_at": "document_idle"
         }
     ],
     "content_security_policy": {

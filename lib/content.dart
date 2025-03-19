@@ -1,23 +1,32 @@
-//import 'dart:js_interop';
-//import 'package:web/web.dart' as web;
-
 import 'dart:async';
+import 'dart:js_interop';
+
+import 'package:web/web.dart' as web;
 
 void content() => runZonedGuarded(
   () {
-    /* web.console.log('Content: Hello, World!'.toJS);
-    web.console.log('Compiler: ${const String.fromEnvironment('COMPILER')}'.toJS);
-    web.document.body?.remove();
-
     web.window.onMessage.listen((event) {
       web.console.log('Content: Received message: ${event.data}'.toJS);
-    }); */
-    print('Content: !!!');
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      print('Content: ${DateTime.now()}');
     });
+
+    void removeImgs() {
+      final images = web.document.querySelectorAll('img');
+      for (var i = 0; i < images.length; i++) {
+        final item = images.item(i);
+        if (item.isA<web.HTMLImageElement>()) {
+          (item as web.HTMLImageElement).remove();
+        }
+      }
+      web.console.log('Content: Removed ${images.length} images'.toJS);
+    }
+
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      removeImgs();
+    });
+
+    removeImgs();
   },
   (error, stackTrace) {
-    print('Content Error: $error\n$stackTrace');
+    web.console.log('Content Error: $error\n$stackTrace'.toJS);
   },
 );
