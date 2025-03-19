@@ -1,4 +1,4 @@
-import 'package:ccopilot/content.dart';
+import 'package:chromeextension/content.dart';
 
 void main() {
   content();

@@ -41,7 +41,7 @@
       },
       "type": "shell",
       "command": [
-        "dart run build_runner build --delete-conflicting-outputs --release",
+        "dart run build_runner build --delete-conflicting-outputs",
         "&& dart format -l 120 web lib test"
       ],
       "dependsOn": [

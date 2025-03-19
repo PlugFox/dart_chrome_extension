@@ -16,20 +16,24 @@ targets:
           - web/**.dart
         dev_options:
           compilers:
-            dartdevc:
+            #dartdevc:
+            #  args:
+            #    - -DCOMPILER=dartdevc
+            dart2js:
               args:
-                - -DCOMPILER=dartdevc
+                - -O0
+                - -DCOMPILER=dart2js
         release_options:
           compilers:
             dart2js:
               args:
-                - -O1
+                - -O3
                 - -DCOMPILER=dart2js
             #dart2wasm:
             #  args:
             #    - -O3
             #    - -DCOMPILER=dart2wasm
-      ccopilot|client_js_copy_builder:
+      chromeextension|client_js_copy_builder:
         enabled: true
 
 builders:

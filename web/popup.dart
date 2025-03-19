@@ -1,3 +1,3 @@
-import 'package:ccopilot/popup.dart';
+import 'package:chromeextension/popup.dart';
 
 void main() => popup();

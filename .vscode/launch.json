@@ -8,14 +8,21 @@
             "runtimeArgs": [
                 "--remote-debugging-port=9222",
                 "--disable-extensions-except=${workspaceFolder}/build",
-                "--load-extension=${workspaceFolder}/build"
+                "--load-extension=${workspaceFolder}/build",
+                "--auto-open-devtools-for-tabs"
             ],
             "webRoot": "${workspaceFolder}/build",
+            "sourceMapPathOverrides": {
+                "../*": "${workspaceFolder}/*",
+                "../web/*": "${workspaceFolder}/web/*",
+                "/*": "${workspaceFolder}/build/*"
+            },
             "cwd": "${workspaceFolder}",
             "env": {},
             "preLaunchTask": "dart:build_runner:all",
             "sourceMaps": true,
             "smartStep": true,
+            "trace": true,
             "skipFiles": [
                 "**/node_modules/**",
                 "**/chrome-extension://*/**"
@@ -26,7 +33,13 @@
             "type": "chrome",
             "request": "attach",
             "port": 9222,
-            "webRoot": "${workspaceFolder}",
+            "webRoot": "${workspaceFolder}/build",
+            "sourceMapPathOverrides": {
+                "../*": "${workspaceFolder}/build/*",
+                "../../*": "${workspaceFolder}/build/*",
+                "../web/*": "${workspaceFolder}/build/web/*",
+                "/*": "${workspaceFolder}/build/*"
+            },
             "sourceMaps": true,
             "smartStep": true,
             "skipFiles": [

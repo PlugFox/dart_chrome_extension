@@ -2,14 +2,10 @@
 # PROJECT METADATA
 # ==============================================================================
 
-name: ccopilot
+name: chromeextension
 
 description: >
-  Chrome Copilot is a browser extension that helps you to navigate through the web.
-  It provides you with a roadmap of the website you are currently visiting.
-  It shows you the structure of the website, the number of pages, and the number of links.
-  It also allows you to search for specific pages and links.
-  You can also save your favorite pages and links for later use.
+  Chrome Extension is a browser extension that helps you to navigate through the web.
 
 publish_to: "none"
 
@@ -17,9 +13,9 @@ version: 0.0.1
 
 homepage: https://plugfox.dev
 
-repository: https://github.com/plugfox/chrome_copilot
+repository: https://github.com/PlugFox/dart_chrome_extension
 
-issue_tracker: https://github.com/plugfox/chrome_copilot/issues
+issue_tracker: https://github.com/PlugFox/dart_chrome_extension/issues
 
 #funding:
 #  - https://www.buymeacoffee.com/

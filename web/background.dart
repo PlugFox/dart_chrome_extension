@@ -5,7 +5,7 @@
 //external web.ServiceWorkerGlobalScope get self;
 //@JS()
 //external JSAny get self;
-import 'package:ccopilot/background.dart';
+import 'package:chromeextension/background.dart';
 
 void main() {
   /* self.clients.matchAll().toDart.then((clients) {
