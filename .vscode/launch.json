@@ -6,7 +6,7 @@
             "request": "launch",
             "name": "Launch Chrome Extension",
             "runtimeArgs": [
-                "--remote-debugging-port=9222",
+                /* "--remote-debugging-port=9222", */
                 "--disable-extensions-except=${workspaceFolder}/build",
                 "--load-extension=${workspaceFolder}/build",
                 "--auto-open-devtools-for-tabs"
@@ -24,27 +24,7 @@
             "smartStep": true,
             "trace": true,
             "skipFiles": [
-                "**/node_modules/**",
-                "**/chrome-extension://*/**"
-            ]
-        },
-        {
-            "name": "Debug Content Script",
-            "type": "chrome",
-            "request": "attach",
-            "port": 9222,
-            "webRoot": "${workspaceFolder}/build",
-            "sourceMapPathOverrides": {
-                "../*": "${workspaceFolder}/build/*",
-                "../../*": "${workspaceFolder}/build/*",
-                "../web/*": "${workspaceFolder}/build/web/*",
-                "/*": "${workspaceFolder}/build/*"
-            },
-            "sourceMaps": true,
-            "smartStep": true,
-            "skipFiles": [
-                "**/node_modules/**",
-                "**/chrome-extension://*/**"
+                "**/node_modules/**"
             ]
         },
         {
